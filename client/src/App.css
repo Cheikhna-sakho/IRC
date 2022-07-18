@@ -1,0 +1,16 @@
+@import url("./style/style.css");
+.body-page {
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  grid-template-rows: max-content auto max-content;
+}
+/* footer, .App{
+  display: flex;
+  align-items: center;
+}
+
+.input-text{
+  margin-right: 20px;
+} */
