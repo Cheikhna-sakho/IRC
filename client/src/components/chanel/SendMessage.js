@@ -9,7 +9,7 @@ const SendMsg = ({ socket, sendData, setData, getListChanel }) => {
         e.preventDefault();
         const data = { message: msg, context: "a ecrit :", ...sendData };
         try {
-            // console.log(data);
+
             if (msg[0] === "/") {
                 let getCmd = myCommande.filter(cmd => msg.includes(`/${cmd.command}`));
                 if (getCmd.length !== 0) {
@@ -20,7 +20,6 @@ const SendMsg = ({ socket, sendData, setData, getListChanel }) => {
                 } else {
                     socket.emit("not_found", "command introuvable")
                 }
-                //
                 setData((socketData) => [...socketData, data]);
             } else {
                 socket.emit("msg", data)

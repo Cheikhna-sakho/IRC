@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Log from "../components/nav/NavLog";
 import Out from "../components/nav/NavOut";
 const Navbar = () => {

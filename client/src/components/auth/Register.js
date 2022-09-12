@@ -1,21 +1,23 @@
-import React, { useState,createContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { create } from "../chanel/Commade";
-import socket from "../socket/socket";
+import socket from "../../data/socket";
 
-const name = sessionStorage.getItem("username");
-export const userContext = createContext(name);
+import UserContext from "../../contexts/UserContext";
+
 const RegisterUser = () => {
-
+    
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const handleChangeName = (e) => {setUsername(e.target.value)};
+    const [usernameT, setUsernameT] = useState("");
+    const {setUsername} = useContext(UserContext);
+
+    const handleChangeName = (e) => {setUsernameT(e.target.value)};
     const handleSubmit = (e)=>{
         e.preventDefault();
-        sessionStorage.setItem("username", username);
-        socket.emit("userLogin",username);
+        setUsername(usernameT);
+        socket.emit("userLogin",usernameT);
         create("invité");
-        navigate("/welcom")
+        navigate("/msg")
     }
     return (
         <div className="register">

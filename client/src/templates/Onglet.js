@@ -1,5 +1,5 @@
-import CreateChanel from "../chanel/Create";
-import ListChanel from "../chanel/ListChanel";
+import CreateChanel from "../components/chanel/Create";
+import ListChanel from "../components/chanel/ListChanel";
 const Onglet = () => {
     return (
         <div className="onglet bg-white radius grid-row">

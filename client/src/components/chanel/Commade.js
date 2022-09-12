@@ -1,5 +1,4 @@
-import socket from "../socket/socket";
-import { joinChanel } from "./join";
+import socket from "../../data/socket";
 
 export const nick = (newname) => {
     console.log(newname);
@@ -8,8 +7,16 @@ export const nick = (newname) => {
 }
 export const create = (chanel)=>{
     socket.emit("create", chanel);
-    joinChanel(socket, chanel);
+    join(socket, chanel);
     
+}
+export const join = (chanel) => {
+
+    if (chanel !== "") {
+        try {
+            socket.emit("join_chanel", chanel);
+        } catch (error) { console.log(error); }
+    }
 }
 export const leave = ()=>{
 
@@ -17,9 +24,7 @@ export const leave = ()=>{
 export const users = ()=>{
 
 }
-export const join = ()=>{
-    // joinChanel(socket)
-}
+
 export const deleteChanel = ()=>{
 
 }
@@ -34,46 +39,31 @@ export const checkList = (search) =>{
     socket.emit("list",search);
 }
 export const notFound = () => socket.emit("not_found","commande introuvable"); 
-// export const create = ()=>{
 
-// }
+
 export const myCommande = [
     {
         command: 'nick',
-        call : function(newname){
-            sessionStorage.setItem("username", newname.rename);
-            socket.emit("rename", newname);
-        }
+        call : nick
     },
     {
         command: 'create',
-        call : function(chanel){
-            socket.emit("create", chanel);
-            joinChanel(socket, chanel);
-        }
+        call : create
     },
     {
         command: 'leave',
-        call : function(){
-
-        }
+        call : leave
     },
     {
         command: 'join',
-        call : function(){
-
-        }
+        call : join
     },
     {
         command: 'delete',
-        call : function(){
-
-        }
+        call : deleteChanel
     },
     {
         command: 'list',
-        call : function(search){
-            socket.emit("list", search);
-        }
+        call : list
     },
 ]

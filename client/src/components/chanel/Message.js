@@ -1,27 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import socket from "../socket/socket";
-import useUsername from "../user/user";
-
+import UserContext from "../../contexts/UserContext";
+import socket from "../../data/socket";
+import { join } from "./Commade";
 import GetMsg from "./GetMsg";
-import { joinChanel } from "./join";
+
 
 import SendMsg from "./SendMessage";
 
 const MessageChanel = () => {
-    const username = useUsername();
+    const {username} = useContext(UserContext);
     const location = useLocation();
     const room = location.state;
-
     const sendData = { chanel: room, user: username };
     const [recieve, setRecieve] = useState([]);
 
-    //
-    useEffect(() => joinChanel(socket, room), [location,room])
+    useEffect(() => join(room), [location,room])
     useEffect(() => {
         socket.on("recieve_msg", message => {
             setRecieve((data) => [...data, message]);
-            // message.user !== username ? setUserClass("") : setUserClass("auth");
         });
     
 

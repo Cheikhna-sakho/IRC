@@ -11,7 +11,6 @@ const ListChanel = () => {
         navigate("/msg", { state: chanel });
     }
     useEffect(() => {
-        // create(socket,"invité");
         list(setChanels);
     }, []);
     return (

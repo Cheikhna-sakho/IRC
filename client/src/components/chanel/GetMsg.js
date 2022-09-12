@@ -5,7 +5,6 @@ const GetMsg = ({ msgs }) => {
                 return (
                     <div key={i}>
                         <div><span className="user">{msg.user}</span> {msg.context} {msg.message}</div>
-                        {/* <div></div> */}
                     </div>
                 )
             })}

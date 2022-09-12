@@ -38,21 +38,20 @@ io.on('connection', (socket) => {
     auth = user;
     users = [...users, user];
     socket.emit("users", users);
-    // console.log(users);
+    
   });
   socket.on("rename", nickname => {
     auth = nickname.rename;
-    // console.log(nickname);
+   
     socket.emit("recieve_msg", {
       context: "a changé de nom ",
       message: "en " + nickname.rename,
       user: nickname.username,
     });
-    // auth = nickname.rename;
-    // console.log("auth = ", auth);
+   
   })
   socket.on("list", search => {
-    // console.log("list",chanels);
+    
     const chanelList = search !== "" && search !== null ? chanels.filter(cha => cha.includes(search)) : chanels;
       socket.emit("recieve_msg", {
         context: "veux voir la list des channels ci-dessous: ",

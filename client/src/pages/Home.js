@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import MessageChanel from "../components/chanel/Message";
+import UserContext from "../contexts/UserContext";
 import Layout from "../templates/Layout";
+import Register from "./Register";
 
 const Home = () => {
-    return <Layout/>;
+    const { username } = useContext(UserContext);
+    return username ? <Layout content={<MessageChanel />} /> : <Register />
 }
 export default Home;
