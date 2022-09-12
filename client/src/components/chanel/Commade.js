@@ -1,7 +1,7 @@
 import socket from "../../data/socket";
 
 export const nick = (newname) => {
-    console.log(newname);
+    
     sessionStorage.setItem("username", newname.rename);
     socket.emit("rename", newname);
 }

@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import Register from "./Register";
+import MessageChanel from "../components/messages/Message"
+import Layout from "../templates/Layout"
 
-const { default: MessageChanel } = require("../components/chanel/Message")
-const { default: Layout } = require("../templates/Layout")
-
-const Message = () =>{
-    const {username} = useContext(UserContext)
-    return username ? <Layout content={<MessageChanel/>}/>:<Register/>
+const Message = () => {
+    const { username } = useContext(UserContext)
+    return username ? <Layout content={<MessageChanel />} /> : <Register />
 
 }
 export default Message;

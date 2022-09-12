@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import MessageChanel from "../components/chanel/Message";
+import MessageChanel from "../components/messages/Message";
 import UserContext from "../contexts/UserContext";
 import Layout from "../templates/Layout";
 import Register from "./Register";

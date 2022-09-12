@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import socket from "../../data/socket";
-import { join } from "./Commade";
+import { join } from "../chanel/Commade";
 import GetMsg from "./GetMsg";
 
 
@@ -30,7 +30,6 @@ const MessageChanel = () => {
             </div>
             <div className="main-msg">
                 <GetMsg msgs={recieve} />
-     
             </div>
             <SendMsg sendData={sendData} setData={setRecieve} socket={socket} />
         </section>

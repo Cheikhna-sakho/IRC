@@ -1,9 +1,9 @@
+import { useContext } from "react";
 import Log from "../components/nav/NavLog";
-import Out from "../components/nav/NavOut";
+import UserContext from "../contexts/UserContext";
+
 const Navbar = () => {
-    const userStatus = sessionStorage.getItem("username");
-    return (
-        userStatus ? <Log /> : <Out />
-    );
+    const { username } = useContext(UserContext);
+    return username && <Log />;
 }
 export default Navbar;

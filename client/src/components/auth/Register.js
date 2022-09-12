@@ -17,7 +17,7 @@ const RegisterUser = () => {
         setUsername(usernameT);
         socket.emit("userLogin",usernameT);
         create("invité");
-        navigate("/msg")
+        navigate("/msg");
     }
     return (
         <div className="register">

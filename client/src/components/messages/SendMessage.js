@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {myCommande} from "./Commade";
+import {myCommande} from "../chanel/Commade";
 
 const SendMsg = ({ socket, sendData, setData, getListChanel }) => {
 
