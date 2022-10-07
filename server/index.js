@@ -40,15 +40,15 @@ io.on('connection', (socket) => {
     socket.emit("users", users);
     
   });
-  socket.on("rename", nickname => {
-    auth = nickname.rename;
-   
+  socket.on("rename", rename => {
+    console.log(rename);
     socket.emit("recieve_msg", {
       context: "a changé de nom ",
-      message: "en " + nickname.rename,
-      user: nickname.username,
+      message: "en " + rename,
+      user: auth,
     });
-   
+    auth = rename;
+   socket.emit("new_name",rename)
   })
   socket.on("list", search => {
     
