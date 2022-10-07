@@ -28,10 +28,14 @@ io.on('connection', (socket) => {
   });
 
   socket.on("join_chanel", data => {
+    console.log(data+ " is join");
     socket.join(data);
+    socket.emit("actual_chanel",  data )
   });
+  
   socket.on("create", chanel => {
     chanels = uniqueAr([...chanels, chanel]);
+    console.log(chanels, "recup cha");
     socket.emit("chanels", chanels);
   })
   socket.on("userLogin", user => {
@@ -51,8 +55,9 @@ io.on('connection', (socket) => {
    socket.emit("new_name",rename)
   })
   socket.on("list", search => {
+    // console.log("serch =", search);
+    const chanelList = search !== "" && search !== null ? chanels.filter(cha => cha?.includes(search)) : chanels;
     
-    const chanelList = search !== "" && search !== null ? chanels.filter(cha => cha.includes(search)) : chanels;
       socket.emit("recieve_msg", {
         context: "veux voir la list des channels ci-dessous: ",
         message: chanelList.join("<br/>"),
