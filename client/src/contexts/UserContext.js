@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { create, join, list } from '../components/chanel/Commade';
+
 import socket from '../data/socket';
 import useSession from '../hooks/useSession';
 
@@ -12,11 +12,6 @@ export const UserContextProvider = ({ children }) => {
     useEffect(() => {
         socket.on("new_name", newName => setUsername(newName));
     }, [setUsername]);
-    useEffect (() => {
-        create(chanel);
-        join(chanel);
-        list(setChanels);
-    },[chanel]);
 
     return (
         <UserContext.Provider value={{ username, setUsername,chanel,setChanel, chanels,setChanels }}>

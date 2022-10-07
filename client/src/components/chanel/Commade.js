@@ -1,8 +1,6 @@
 import socket from "../../data/socket";
 
 export const nick = (newname) => {
-    
-    // sessionStorage.setItem("username", newname.rename);
     socket.emit("rename", newname);
 }
 export const create = (chanel)=>{
@@ -29,13 +27,14 @@ export const deleteChanel = ()=>{
 
 }
 export const list = (setData)=>{
-    console.log("ouaiiiis");
-    socket.on("chanels", chanel => {
-        console.log(chanel);
-        setData(chanel);
+    // console.log("liste mis a jour");
+    socket.on("chanels", chanels => {
+        console.log(chanels,"chanels recuperer dans socket");
+        setData(chanels);
     });
 }
 export const checkList = (search) =>{
+    console.log("search = ",search);
     socket.emit("list",search);
 }
 export const notFound = () => socket.emit("not_found","commande introuvable"); 

@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-
+import { useNavigate } from "react-router-dom";
 import CommandeContext from "../../contexts/CommandContext";
-import UserContext from "../../contexts/UserContext";
 
 // import { list } from "./Commade";
 
 
 const ListChanel = () => {
-    const { chanels } = useContext(UserContext);
-    const { setRoom } = useContext(CommandeContext);
+    const navigate = useNavigate()
+    const { setRoom, chanels} = useContext(CommandeContext);
     const HandleJoin = (chanel) => {
         setRoom(chanel);
+        navigate("/msg");
     }
 
     return (

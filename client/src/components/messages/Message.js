@@ -15,10 +15,11 @@ const MessageChanel = () => {
     const [recieve, setRecieve] = useState([]);
 
     useEffect(() => {
-        console.log(room);
-        join(room)
+        console.log("room=",room);
+        room && join(room)
     }, [room])
     useEffect(() => {
+        console.log("yohoh");
         socket.on("recieve_msg", message => {
             setRecieve((data) => [...data, message]);
         });
