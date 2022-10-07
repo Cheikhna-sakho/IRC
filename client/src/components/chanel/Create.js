@@ -1,16 +1,18 @@
-import React, { useState} from "react";
+import React, { useContext, useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { create } from "./Commade";
+import UserContext from "../../contexts/UserContext";
+
 
 const CreateChanel = () => {
     const navigate = useNavigate();
-    const [chanel, setChanel] = useState(null);
-    const handleChange = (e) => setChanel(e.target.value);
+    const [newChanel,setNewChanel] = useState(null);
+    const {setChanel} = useContext(UserContext);
+    const handleChange = (e) => setNewChanel(e.target.value);
     const handleSubmit = (e) => {
         e.preventDefault();
         try {
-            create(chanel)
-            navigate("/msg", { state: chanel });
+            setChanel(newChanel);
+            navigate("/msg")
         } catch (error) { console.log(error) };
     }
     return (

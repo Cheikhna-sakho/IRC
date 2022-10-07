@@ -1,15 +1,13 @@
-import Layout from "../templates/Layout";
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 const Welcom = () => {
-    const user = sessionStorage.getItem('username');
-    const JsxHome = ()=>{
-        return(
-            <div>
-                <p>Bienvenue {user} sur SOCKET.IO</p>
-                <p>Creer votre propre chanel avec vos amis ou rejoignez les utilisateur du monde entier dans les canal deja disponible</p>
-            </div>
-        )
-    }
-    return <Layout content={<JsxHome/>}/>
+    const {username} = useContext(UserContext);
+    return (
+        <div>
+            <p>Bienvenue {username} sur SOCKET.IO</p>
+            <p>Creer votre propre chanel avec vos amis ou rejoignez les utilisateur du monde entier dans les canal deja disponible</p>
+        </div>
+    )
 }
 export default Welcom;

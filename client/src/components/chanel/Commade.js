@@ -2,12 +2,12 @@ import socket from "../../data/socket";
 
 export const nick = (newname) => {
     
-    sessionStorage.setItem("username", newname.rename);
+    // sessionStorage.setItem("username", newname.rename);
     socket.emit("rename", newname);
 }
 export const create = (chanel)=>{
     socket.emit("create", chanel);
-    join(socket, chanel);
+    join(chanel);
     
 }
 export const join = (chanel) => {
@@ -64,6 +64,6 @@ export const myCommande = [
     },
     {
         command: 'list',
-        call : list
+        call : checkList
     },
 ]

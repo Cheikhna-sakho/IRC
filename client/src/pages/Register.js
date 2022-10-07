@@ -1,7 +1,6 @@
-import Layout from "../templates/Layout";
 import RegisterUser from "../components/auth/Register";
 
 const Register = () => {
-    return <Layout content={<RegisterUser/>}/>;
+    return <RegisterUser />;
 }
 export default Register;

@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 
-import { list } from "./Commade";
+import CommandeContext from "../../contexts/CommandContext";
+import UserContext from "../../contexts/UserContext";
+
+// import { list } from "./Commade";
 
 
 const ListChanel = () => {
-    const navigate = useNavigate();
-    const [chanels, setChanels] = useState([]);
+    const { chanels } = useContext(UserContext);
+    const { setRoom } = useContext(CommandeContext);
     const HandleJoin = (chanel) => {
-        navigate("/msg", { state: chanel });
+        setRoom(chanel);
     }
-    useEffect(() => {
-        list(setChanels);
-    }, []);
+
     return (
         <ul className="chanels-listener">
-            {chanels.map((chanel, i) => {
+            {chanels && chanels.map((chanel, i) => {
                 return (
-                    <li className="chanel" key={i}>
+                    chanel && <li className="chanel" key={i}>
                         <button className="bg-black radius" onClick={() => HandleJoin(chanel)}>
                             {chanel}
                         </button>
