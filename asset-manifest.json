@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Internet-Relay-Chat/static/css/main.00a2488c.css",
-    "main.js": "/Internet-Relay-Chat/static/js/main.4c472ca2.js",
+    "main.css": "/Internet-Relay-Chat/static/css/main.88d892d2.css",
+    "main.js": "/Internet-Relay-Chat/static/js/main.cc1e1210.js",
     "static/js/787.c4e7f8f9.chunk.js": "/Internet-Relay-Chat/static/js/787.c4e7f8f9.chunk.js",
     "index.html": "/Internet-Relay-Chat/index.html",
-    "main.00a2488c.css.map": "/Internet-Relay-Chat/static/css/main.00a2488c.css.map",
-    "main.4c472ca2.js.map": "/Internet-Relay-Chat/static/js/main.4c472ca2.js.map",
+    "main.88d892d2.css.map": "/Internet-Relay-Chat/static/css/main.88d892d2.css.map",
+    "main.cc1e1210.js.map": "/Internet-Relay-Chat/static/js/main.cc1e1210.js.map",
     "787.c4e7f8f9.chunk.js.map": "/Internet-Relay-Chat/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.00a2488c.css",
-    "static/js/main.4c472ca2.js"
+    "static/css/main.88d892d2.css",
+    "static/js/main.cc1e1210.js"
   ]
 }
