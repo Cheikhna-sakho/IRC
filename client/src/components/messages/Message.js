@@ -19,7 +19,6 @@ const MessageChanel = () => {
         room && join(room)
     }, [room])
     useEffect(() => {
-        console.log("yohoh");
         socket.on("recieve_msg", message => {
             setRecieve((data) => [...data, message]);
         });

@@ -16,10 +16,11 @@ const io = new Server(server, {
   }
 });
 const uniqueAr = (ar) => {
-  return ar.filter((v, i, a) => a.indexOf(v) === i);
+  return ar.filter((v, i, a) => (a.indexOf(v) === i));
 }
 let users = []
 let chanels = [];
+const getDate = () => new Date().toLocaleString("fr-FR");
 let auth = "";
 io.on('connection', (socket) => {
   socket.on("msg", msg => {
@@ -28,46 +29,45 @@ io.on('connection', (socket) => {
   });
 
   socket.on("join_chanel", data => {
-    console.log(data+ " is join");
     socket.join(data);
-    socket.emit("actual_chanel",  data )
+    socket.emit("actual_chanel", data)
   });
-  
+
   socket.on("create", chanel => {
-    chanels = uniqueAr([...chanels, chanel]);
+    chanels = uniqueAr([...chanels, chanel]).filter(chanel => chanel && chanel);
     console.log(chanels, "recup cha");
     socket.emit("chanels", chanels);
   })
   socket.on("userLogin", user => {
+    console.log("is login", user);
     auth = user;
     users = [...users, user];
     socket.emit("users", users);
-    
+
   });
   socket.on("rename", rename => {
-    console.log(rename);
+    const date = getDate();
     socket.emit("recieve_msg", {
-      context: "a changé de nom ",
-      message: "en " + rename,
-      user: auth,
+      date,
+      message: auth + " a changer de nom en " + rename,
+      user: rename,
     });
     auth = rename;
-   socket.emit("new_name",rename)
+    socket.emit("new_name", rename)
   })
   socket.on("list", search => {
-    // console.log("serch =", search);
+    const date = getDate();
     const chanelList = search !== "" && search !== null ? chanels.filter(cha => cha?.includes(search)) : chanels;
-    
-      socket.emit("recieve_msg", {
-        context: "veux voir la list des channels ci-dessous: ",
-        message: chanelList.join("<br/>"),
-        user: auth,
-      });
+    socket.emit("recieve_msg", {
+      date,
+      message: chanelList.join(", "),
+      user: auth,
+    });
   })
   socket.on("not_found", er => {
-    console.log(auth);
+    const date = getDate();
     socket.emit("recieve_msg", {
-      context: "execute une ",
+      date,
       message: er,
       user: auth,
     });

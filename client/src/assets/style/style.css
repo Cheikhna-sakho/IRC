@@ -53,3 +53,19 @@ main.grid-col {
     padding: 15px;
     overflow: hidden;
 }
+
+span.user {
+    /* padding: 10px; */
+    /* font-size: 1.2em; */
+  }
+  
+  span.date {
+    font-weight: 100;
+    font-size: 0.7em;
+  }
+  
+  
+  .message-content {
+    text-align: left;
+    grid-auto-columns: max-content;
+  }

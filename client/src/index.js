@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserContextProvider } from './contexts/UserContext';
+import { CommadeContextProvider } from './contexts/CommandContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <UserContextProvider>
-      <App />
+      <CommadeContextProvider>
+        <App />
+      </CommadeContextProvider>
     </UserContextProvider>
   </BrowserRouter>
 );

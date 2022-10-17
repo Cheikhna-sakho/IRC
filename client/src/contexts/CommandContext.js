@@ -43,7 +43,7 @@ export const ChanelsDataContext = () => {
     return contextChanels
 }
 export const RoomDataContext = () => {
-    const {contextRoom} = useContext(CommandeContext);
-    return contextRoom
+    const {room,setRoom} = useContext(CommandeContext);
+    return {room,setRoom};
 }
 export default CommandeContext;

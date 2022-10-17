@@ -8,28 +8,27 @@ import Welcom from "./pages/Welcom";
 import Message from "./pages/Message";
 import UserContext from "./contexts/UserContext";
 import Layout from "./templates/Layout";
-import { CommadeContextProvider } from "./contexts/CommandContext";
+import { RoomDataContext } from "./contexts/CommandContext";
 
 function App() {
 
   const { username } = useContext(UserContext);
-
+  const { room } = RoomDataContext();
+  console.log(room);
   return (
-    <CommadeContextProvider>
-      <Layout>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          {username && (
-            <>
-              <Route path="/msg" element={<Message />} />
-              <Route path="/welcom" element={<Welcom />} />
-            </>
-          )}
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </Layout>
-    </CommadeContextProvider>
+    <Layout>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        {username && (
+          <>
+            {<Route path="/msg" element={room ? <Message /> : <Welcom />} />}
+            <Route path="/welcom" element={<Welcom />} />
+          </>
+        )}
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </Layout>
   );
 }
 
